@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Module Manager</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/3.4.1/webjars-requirejs.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/4.3.1/webjars-requirejs.js"></script>
+</head>
+<body>
+<div>
+    <button class="btn btn-primary"><a class="text-light" href="/new">Ajouter module</a></button>
+    <button class="btn btn-danger"><a class="text-light" href="/compmodule/index">Composant Module</a></button>
+    <h1 class="text-dark">Liste des Module</h1>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="row">Module ID</th>
+                <th>Nom Module</th>
+                <th>Crédit</th>
+                <th>Coefficient</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="module : ${listModule}">
+            	<td th:text="${module.module_id}">Module ID</td>
+                <td th:text="${module.nomModule}">Nom Module</td>
+                <td th:text="${module.credit}">Crédit</td>
+                <td th:text="${module.coefficient}">Coefficient</td>
+                <td>
+                    <button class="btn btn-info"><a class="text-light" th:href="@{'/edit/' + ${module.module_id}}">Edit</a></button>
+                	&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-danger"><a class="text-light" th:href="@{'/delete/' + ${module.module_id}}">Delete</a></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>    
+</body>
+</html>

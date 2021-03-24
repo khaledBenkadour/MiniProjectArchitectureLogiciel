@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Composant Module Manager</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/3.4.1/webjars-requirejs.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/4.3.1/webjars-requirejs.js"></script>
+</head>
+<body>
+    <div>
+        <button class="btn btn-primary"><a class="text-light" href="/compmodule/new">Ajouter Composant module</a></button>
+        <h1>Liste des Composant Module</h1>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="row">Composant Module ID</th>
+                    <th>Volume Horaire Cour</th>
+                    <th>Volume Horaire TD</th>
+                    <th>Volume Horaire TP</th>
+                    <th>Nom Module</th>
+                    <th>Download DOC</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="compModule : ${listCompModule}">
+            	    <td th:text="${compModule.id}">Composant Module ID</td>
+                    <td th:text="${compModule.volHorCour}">Volume Horaire Cour</td>
+                    <td th:text="${compModule.volHorTd}">Volume Horaire TD</td>
+                    <td th:text="${compModule.volHorTp}">Volume Horaire TP</td>
+                    <td th:text="${compModule.module.nomModule}">Nom Module</td>
+                    <td><a href="#">.DOC</a></td>
+                    <td>
+                        <button class="btn btn-info"><a class="text-light" th:href="@{'/compmodule/edit/' + ${compModule.id}}">Edit</a></button>
+                	&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-danger"><a class="text-light" th:href="@{'/compmodule/delete/' + ${compModule.id}}">Delete</a></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-info"><a class="text-light" href="/index">Back ... !</a></button>
+        </div>
+</body>
+</html>
